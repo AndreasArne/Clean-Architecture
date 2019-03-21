@@ -67,5 +67,5 @@ def test_repository_list_with_price_between_filter(
             'price_gt': 48
         }
     )
-    assert len(repo_romos) == 1
+    assert len(repo_rooms) == 1
     assert repo_rooms[0].code == '913694c6-435a-4366-ba0d-da5334a611b2'

@@ -13,7 +13,7 @@ class PostgresRepo:
             connection_data['dbname']
         )
         
-        self.enginge = create_engine(connection_string)
+        self.engine = create_engine(connection_string)
         Base.metadata.bind = self.engine
     
     def list(self, filters=None):
@@ -41,4 +41,5 @@ class PostgresRepo:
                 latitude=q.latitude,
                 longitude=q.longitude
             )
+            for q in query
         ]
