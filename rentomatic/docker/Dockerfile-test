@@ -1,0 +1,20 @@
+FROM python:3.7-alpine
+
+WORKDIR /usr/src/rentomatic
+
+COPY requirements ./requirements
+
+RUN apk add --no-cache --virtual .build-deps \
+    gcc \
+    python3-dev \
+    musl-dev \
+    postgresql-dev \
+    && pip install --no-cache -r requirements/test.txt \
+    && apk del --no-cache .build-deps
+
+
+COPY rentomatic tests initial_* ./
+
+RUN ls
+
+CMD ["py.test", "-svv"]
